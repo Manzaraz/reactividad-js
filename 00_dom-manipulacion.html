@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación manual del DOM</title>
+</head>
+<body>
+    <h1>Manipulación manual del DOM</h1>
+    <form id="todo-form" autocomplete="off">
+        <input type="text" placeholder="Tareas por hacer..." id="todo-item">
+        <input type="submit" value="Agregar">
+    </form>
+    <h2>List de Tareas</h2>
+    <ul id="todo-list"></ul>
+    <script>
+        const d = document,
+            $item = d.getElementById("todo-item"),
+            $list = d.getElementById("todo-list");
+
+        d.addEventListener("submit", (e) => {
+            if (!e.target.matches("#todo-form")) return false;
+            e.preventDefault();
+
+            // Agregar un item a la lista
+            let $li = d.createElement("li"); 
+            $li.textContent = $item.value;
+            $list.appendChild($li);
+
+            // Limpiar un item de la lista
+            $li.value = "";
+            $item.focus();
+
+
+        })
+    </script>
+    
+</body>
+</html>
